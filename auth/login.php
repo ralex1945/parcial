@@ -83,7 +83,7 @@ unset($_SESSION['auth_error'], $_SESSION['auth_ok']);
             <input type="hidden" name="opcion" value="login">
 
             <button type="submit">Ingresar</button>
-            <button type="button" style="margin-top: 10px; background: #6c757d;">Registrarse</button>
+            <button type="button" style="margin-top: 10px; background: #6c757d;" onclick="window.location.href='registro.php'">Registrarse</button>
         </form>
 
         <p><a href="../index.php">Volver al inicio</a></p>

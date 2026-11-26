@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/../config/auth.php';
+requerirRol(['admin']);
+?>
 <!doctype html>
 <html lang="es">
 <head>

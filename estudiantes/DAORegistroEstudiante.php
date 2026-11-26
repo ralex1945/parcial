@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../config/auth.php';
 header('Content-Type: application/json; charset=utf-8');
 
 function responder($codigo, $datos)
@@ -6,6 +7,10 @@ function responder($codigo, $datos)
     http_response_code($codigo);
     echo json_encode($datos, JSON_UNESCAPED_UNICODE);
     exit;
+}
+
+if (!esAdmin()) {
+    responder(403, ['ok' => false, 'mensaje' => 'No tienes permiso para registrar estudiantes.']);
 }
 
 function largoTexto($texto)
