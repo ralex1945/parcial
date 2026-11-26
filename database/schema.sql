@@ -1,46 +1,47 @@
-CREATE DATABASE IF NOT EXISTS eventos_universidad
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE eventos_academicos CHARACTER SET utf8mb4;
+USE eventos_academicos;
 
-USE eventos_universidad;
-
-CREATE TABLE IF NOT EXISTS estudiantes (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  carnet VARCHAR(20) NOT NULL UNIQUE,
-  nombre VARCHAR(100) NOT NULL,
-  apellido VARCHAR(100) NOT NULL,
-  usuario VARCHAR(50) NOT NULL UNIQUE,
-  clave VARCHAR(255) NOT NULL,
-  rol ENUM('admin', 'estudiante') NOT NULL DEFAULT 'estudiante',
-  creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE usuario (
+    id_usuario  INT AUTO_INCREMENT PRIMARY KEY,
+    usuario     VARCHAR(50)  NOT NULL UNIQUE,
+    clave_hash  VARCHAR(255) NOT NULL,
+    rol         ENUM('admin','estudiante') NOT NULL DEFAULT 'estudiante'
 );
 
-CREATE TABLE IF NOT EXISTS eventos (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  codigo VARCHAR(30) NOT NULL UNIQUE,
-  nombre VARCHAR(150) NOT NULL,
-  descripcion TEXT,
-  lugar VARCHAR(150) NOT NULL,
-  fecha DATE NOT NULL,
-  hora TIME NOT NULL,
-  cupo_disponible INT NOT NULL DEFAULT 0,
-  creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE estudiante (
+    id_estudiante INT AUTO_INCREMENT PRIMARY KEY,
+    carnet        VARCHAR(10) NOT NULL UNIQUE,
+    nombre        VARCHAR(60) NOT NULL,
+    apellido      VARCHAR(60) NOT NULL,
+    id_usuario    INT NOT NULL UNIQUE,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
-CREATE TABLE IF NOT EXISTS inscripciones (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  estudiante_id INT NOT NULL,
-  evento_id INT NOT NULL,
-  fecha_inscripcion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  UNIQUE KEY uq_estudiante_evento (estudiante_id, evento_id),
-  CONSTRAINT fk_inscripcion_estudiante FOREIGN KEY (estudiante_id) REFERENCES estudiantes(id) ON DELETE CASCADE,
-  CONSTRAINT fk_inscripcion_evento FOREIGN KEY (evento_id) REFERENCES eventos(id) ON DELETE CASCADE
+CREATE TABLE evento (
+    id_evento       INT AUTO_INCREMENT PRIMARY KEY,
+    codigo          VARCHAR(15)  NOT NULL UNIQUE,
+    nombre          VARCHAR(100) NOT NULL,
+    descripcion     TEXT,
+    lugar           VARCHAR(100) NOT NULL,
+    fecha           DATE NOT NULL,
+    hora            TIME NOT NULL,
+    cupo_disponible INT UNSIGNED NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS asistencias (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  inscripcion_id INT NOT NULL,
-  fecha DATE NOT NULL,
-  estado ENUM('Asistio', 'Falto') NOT NULL,
-  CONSTRAINT fk_asistencia_inscripcion FOREIGN KEY (inscripcion_id) REFERENCES inscripciones(id) ON DELETE CASCADE
+CREATE TABLE inscripcion (
+    id_inscripcion    INT AUTO_INCREMENT PRIMARY KEY,
+    id_estudiante     INT NOT NULL,
+    id_evento         INT NOT NULL,
+    fecha_inscripcion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (id_estudiante, id_evento),
+    FOREIGN KEY (id_estudiante) REFERENCES estudiante(id_estudiante),
+    FOREIGN KEY (id_evento) REFERENCES evento(id_evento)
+);
+
+CREATE TABLE asistencia (
+    id_asistencia  INT AUTO_INCREMENT PRIMARY KEY,
+    id_inscripcion INT NOT NULL UNIQUE,
+    fecha          DATE NOT NULL,
+    estado         ENUM('presente','ausente','justificado') NOT NULL,
+    FOREIGN KEY (id_inscripcion) REFERENCES inscripcion(id_inscripcion)
 );
