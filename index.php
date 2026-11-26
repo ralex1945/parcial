@@ -21,7 +21,7 @@ $rol = $_SESSION['rol'] ?? null;
                     <a href="auth/logout.php" class="btn btn-outline-danger btn-sm">Cerrar sesión</a>
                 <?php else: ?>
                     <a href="auth/login.php" class="btn btn-primary btn-sm">Iniciar sesión</a>
-                    <a href="auth/registro.php" class="btn btn-outline-secondary btn-sm">Registrarse</a>
+                    <a href="forms/registroEstudiante.php" class="btn btn-outline-secondary btn-sm">Registrarse</a>
                 <?php endif; ?>
             </div>
         </div>
