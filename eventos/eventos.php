@@ -1,4 +1,7 @@
 <?php
+require_once __DIR__ . '/../config/auth.php';
+requerirRol(['admin']);
+
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/EventoController.php';
 
@@ -86,7 +89,7 @@ $codigoMostrar = $editando ? $form['codigo'] : $siguienteCodigo;
             <div class="mt-2 d-flex gap-2">
                 <button type="submit" class="btn btn-primary btn-sm"><?= $editando ? 'Actualizar evento' : 'Agregar evento' ?></button>
                 <?php if ($editando): ?>
-                    <a href="index.php" class="btn btn-outline-secondary btn-sm">Cancelar</a>
+                    <a href="eventos.php" class="btn btn-outline-secondary btn-sm">Cancelar</a>
                 <?php endif; ?>
             </div>
         </form>
