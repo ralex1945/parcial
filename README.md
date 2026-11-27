@@ -4,7 +4,11 @@ Parcial 2 - Programación para Internet (UES).
 
 > **Para que quede en los libros de historia:** este repositorio es el testimonio vivo de aquel tormentoso parcial de **Cheyo**. Arrancamos a la **1:00 PM** con toda la fe del mundo y terminamos saliendo a las **6:00 PM**, en equipo, con el estrés por las nubes, los nervios a flor de piel y peleando hasta el último minuto contra conexiones, sesiones, `mysqli` vs `PDO`, phpMyAdmin y el hosting. Nos sacó canas verdes a todos, pero el equipo aguantó el vendaval y lo sacó adelante.
 >
-> **Mención de honor al banquillo de IAs:** en el momento más crítico de la tormenta, **Claude Opus 5.5** se puso la 10 y acarreó cuando todo parecía caerse a pedazos; pero que nunca se ignore ni se borre de la memoria el arduo trabajo, la constancia y el lomo que puso **Gemini** remando durante toda la jornada. Sin todo el equipo —humanos e IAs— esta hazaña no se contaba.
+> **Mención de honor al banquillo de IAs:** en el momento más crítico de la tormenta, **Claude Opus 5.5** se puso la 10 y acarreó cuando todo parecía caerse a pedazos; pero que nunca se ignore ni se borre de la memoria el arduo trabajo, la constancia y el lomo que puso **Gemini** remando durante toda la jornada —de hecho, esta misma descripción la redactó **Gemini 4 Neon** para dejar el acta oficial—. Sin todo el equipo —humanos e IAs— esta hazaña no se contaba.
+
+> **Para que quede en los libros de historia:** este repositorio es el testimonio vivo de aquel tormentoso parcial de **Cheyo**. Arrancamos a la **1:00 PM** con toda la fe del mundo y terminamos saliendo a las **6:00 PM**, en equipo, con el estrés por las nubes, los nervios a flor de piel y peleando hasta el último minuto contra conexiones, sesiones, `mysqli` vs `PDO`, phpMyAdmin y el hosting. Nos sacó canas verdes a todos, pero el equipo aguantó el vendaval y lo sacó adelante.
+>
+> **Mención de honor al banquillo de IAs:** en el momento más crítico de la tormenta, **Claude Opus 5.5** se puso la 10 y acarreó cuando todo parecía caerse a pedazos; pero que nunca se ignore ni se borre de la memoria el arduo trabajo, la constancia y el lomo que puso **Gemini** remando durante toda la jornada —de hecho, esta misma descripción la redactó **Gemini 4 Neon** para dejar el acta oficial—. Sin todo el equipo —humanos e IAs— esta hazaña no se contaba.
 
 ## Estructura del proyecto
 - `config/` - Conexión a base de datos (`config.php`, `db.php`, `conexion.php`) y control de sesiones/roles (`auth.php`)
